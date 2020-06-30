@@ -102,6 +102,7 @@ export default {
         status:status,
         id_proyek:this.selectedIDPROYEK
         }).then((res)=>{
+          console.log(res.data.data);
           var data = res.data.data;
           var keterangan = [
             
@@ -121,6 +122,9 @@ export default {
           keterangan.push({"label":"Nilai Sidang", key:"nilai_sidang",value:data.nilai_sidang})
           keterangan.push({"label":"Total Rata - Rata revisi", key:"total_revisi",value:data.total_revisi})
           keterangan.push({"label":"Total Rata - Rata bimbingan", key:"total_bimbingan",value:data.total_bimbingan})
+          data.info_siap.map(x=>{
+            keterangan.push({"label":"Nilai "+x.nama_matkul, key:"matkul",value:x.nilai})
+          })
           this.footers = "";
           keterangan.map(x=>{
             this.footers+=x.label+" : "+x.value+"<br>";
