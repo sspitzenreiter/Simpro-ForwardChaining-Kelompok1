@@ -158,7 +158,11 @@ router.post('/checkRule', (req, res)=>{
     "status_lulus":"-1"
   }
   R.execute(fact, function(data){
-    res.send(data);
+    res.send({
+      status:1,
+      message:"Sukses",
+      data:data
+    });
   })
 })
 

@@ -24,6 +24,7 @@
             <el-input v-model="nilaiSidangPembimbing"></el-input>
           </el-form-item>
         </el-form>
+        <span v-html="footers"></span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="cekRekomendasi" type="primary">Cek Nilai</el-button>
           <el-button @click="dialogVisible=false">Cancel</el-button>
@@ -43,6 +44,7 @@ export default {
       dialogVisible:false,
       nilaiSidangPenguji:0,
       nilaiSidangPembimbing:0,
+      footers:"Menunggu nilai...",
       action_col:{
         label:"Aksi",
         props:{
@@ -55,6 +57,9 @@ export default {
               icon:"el-icon-edit"
             },
             handler:row=>{
+              this.nilaiSidangPenguji = 0;
+              this.nilaiSidangPembimbing = 0;
+              this.footers = "Menunggu nilai...";
               this.dialogVisible = true;
               this.listNPM = [];
               this.listNPM.push(row.npm_ketua);
@@ -70,6 +75,7 @@ export default {
       selectedNPM:'',
       selectedIDPROYEK:'',
       data_shown:[],
+      footer:'euy<br>euy',
       total:44,
       titles:[
         {props:"judul_proyek", label:"Judul Proyek"},
@@ -82,6 +88,7 @@ export default {
     selectChangeListener(){
       this.nilaiSidangPenguji = 0;
       this.nilaiSidangPembimbing = 0;
+      this.footers = "Menunggu nilai...";
     },
     cekRekomendasi(){
       var status = "ketua";
@@ -95,7 +102,29 @@ export default {
         status:status,
         id_proyek:this.selectedIDPROYEK
         }).then((res)=>{
-        console.log(res.data);
+          var data = res.data.data;
+          var keterangan = [
+            
+          ];
+          switch(data.status_lulus){
+            case "1":
+              keterangan.push({"label":"Status Kelulusan", key:"keterangan_lulus",value:"Lulus"});
+            break;
+            case "0":
+              keterangan.push({"label":"Status Kelulusan", key:"keterangan_lulus",value:"Lulus Bersyarat"});
+            break;
+            case "-1":
+              keterangan.push({"label":"Status Kelulusan", key:"keterangan_lulus",value:"Tidak Lulus"});
+            break;
+          }
+          keterangan.push({"label":"Nilai Bimbingan", key:"nilai_bimbingan",value:data.nilai_bimbingan})
+          keterangan.push({"label":"Nilai Sidang", key:"nilai_sidang",value:data.nilai_sidang})
+          keterangan.push({"label":"Total Rata - Rata revisi", key:"total_revisi",value:data.total_revisi})
+          keterangan.push({"label":"Total Rata - Rata bimbingan", key:"total_bimbingan",value:data.total_bimbingan})
+          this.footers = "";
+          keterangan.map(x=>{
+            this.footers+=x.label+" : "+x.value+"<br>";
+          });
       });
     },
     async loadData(queryInfo){
@@ -107,6 +136,7 @@ export default {
         this.nilaiSidangPembimbing = 0;
         this.total = res.data.data.length;
         this.data_shown = res.data.data.slice((queryInfo.page-1)*queryInfo.pageSize,queryInfo.page*queryInfo.pageSize);
+        this.footers = "Menunggu nilai...";
       });
       
       // console.log(queryInfo.page*queryInfo.pageSize);
