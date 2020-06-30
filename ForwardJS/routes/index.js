@@ -143,18 +143,19 @@ var lulus = [
     }
   }
 ];
-router.get('/checkRule', (req, res)=>{
+router.post('/checkRule', (req, res)=>{
   var rules = [...rule_nilai_bimbingan_rata,...rule_nilai_sidang_rata,...rule_total_bimbingan_rata, ...lulus];
   var R = new RuleEngine();
   R.register(rules);
   var fact = {
-    "nilai_bimbingan":65,
-    "nilai_sidang":75,
-    "total_revisi":4,
-    "total_bimbingan":12,
-    "max_bimbingan":12,
-    "min_bimbingan":10,
-    "keterangan":""
+    "nilai_bimbingan":parseInt(req.body.nilai_bimbingan),
+    "nilai_sidang":parseInt(req.body.nilai_sidang),
+    "total_revisi":parseInt(req.body.total_revisi),
+    "total_bimbingan":parseInt(req.body.total_bimbingan),
+    "max_bimbingan":parseInt(req.body.max_bimbingan),
+    "min_bimbingan":parseInt(req.body.min_bimbingan),
+    "keterangan":"",
+    "status_lulus":"-1"
   }
   R.execute(fact, function(data){
     res.send(data);

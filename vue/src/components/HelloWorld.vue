@@ -60,6 +60,7 @@ export default {
               this.listNPM.push(row.npm_ketua);
               this.listNPM.push(row.npm_anggota);
               this.selectedNPM = row.npm_ketua;
+              this.selectedIDPROYEK = row.id_proyek;
             },
             label:'Cek Nilai'
           }
@@ -67,6 +68,7 @@ export default {
       },
       listNPM:[],
       selectedNPM:'',
+      selectedIDPROYEK:'',
       data_shown:[],
       total:44,
       titles:[
@@ -90,7 +92,8 @@ export default {
         npm:this.selectedNPM, 
         nilaiSidangPenguji:this.nilaiSidangPenguji, 
         nilaiSidangPembimbing:this.nilaiSidangPembimbing,
-        status:status
+        status:status,
+        id_proyek:this.selectedIDPROYEK
         }).then((res)=>{
         console.log(res.data);
       });

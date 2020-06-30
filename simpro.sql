@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2020 at 06:39 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.26
+-- Waktu pembuatan: 30 Jun 2020 pada 02.51
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`nidn`, `nama`, `jenis_kelamin`, `no_telp`, `prodi`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `admin` (`nidn`, `nama`, `jenis_kelamin`, `no_telp`, `prodi`) VALUES
 ('3217061702990010', 'Luthfi D3', 'L', '087738406127', '13');
 
 --
--- Triggers `admin`
+-- Trigger `admin`
 --
 DELIMITER $$
 CREATE TRIGGER `user_add_admin` AFTER INSERT ON `admin` FOR EACH ROW BEGIN
@@ -63,7 +63,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_key`
+-- Struktur dari tabel `auth_key`
 --
 
 CREATE TABLE `auth_key` (
@@ -78,7 +78,7 @@ CREATE TABLE `auth_key` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bimbingan`
+-- Struktur dari tabel `bimbingan`
 --
 
 CREATE TABLE `bimbingan` (
@@ -95,7 +95,7 @@ CREATE TABLE `bimbingan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bimbingan`
+-- Dumping data untuk tabel `bimbingan`
 --
 
 INSERT INTO `bimbingan` (`id_bimbingan`, `tgl_bimbingan`, `keterangan`, `catatan`, `id_proyek`, `nilai_bimbingan`, `id_kegiatan_progress`, `file_laporan_partial`, `created_date`, `last_update`) VALUES
@@ -265,7 +265,7 @@ INSERT INTO `bimbingan` (`id_bimbingan`, `tgl_bimbingan`, `keterangan`, `catatan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bimbingan_progress`
+-- Struktur dari tabel `bimbingan_progress`
 --
 
 CREATE TABLE `bimbingan_progress` (
@@ -278,7 +278,7 @@ CREATE TABLE `bimbingan_progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bimbingan_progress`
+-- Dumping data untuk tabel `bimbingan_progress`
 --
 
 INSERT INTO `bimbingan_progress` (`id_bimbingan_progress`, `nama_progress`, `status_penyelesaian`, `id_bimbingan`, `last_update`, `created_date`) VALUES
@@ -538,7 +538,7 @@ INSERT INTO `bimbingan_progress` (`id_bimbingan_progress`, `nama_progress`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dokumen_kegiatan`
+-- Struktur dari tabel `dokumen_kegiatan`
 --
 
 CREATE TABLE `dokumen_kegiatan` (
@@ -551,7 +551,7 @@ CREATE TABLE `dokumen_kegiatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dokumen_kegiatan`
+-- Dumping data untuk tabel `dokumen_kegiatan`
 --
 
 INSERT INTO `dokumen_kegiatan` (`id_dokumen`, `nama_dokumen`, `file_dokumen`, `id_kegiatan`, `target`, `created_date`) VALUES
@@ -564,7 +564,7 @@ INSERT INTO `dokumen_kegiatan` (`id_dokumen`, `nama_dokumen`, `file_dokumen`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen`
+-- Struktur dari tabel `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -579,7 +579,7 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dosen`
+-- Dumping data untuk tabel `dosen`
 --
 
 INSERT INTO `dosen` (`nidn`, `nama`, `tgl_lahir`, `tempat_lahir`, `alamat`, `research_interest`, `prodi`, `username`) VALUES
@@ -598,7 +598,7 @@ INSERT INTO `dosen` (`nidn`, `nama`, `tgl_lahir`, `tempat_lahir`, `alamat`, `res
 ('427078401', 'Cahyo Prianto, S.Pd., M.T.', '0000-00-00', '', '', '9,12', '14', 'cahyoprianto@poltekpos.ac.id');
 
 --
--- Triggers `dosen`
+-- Trigger `dosen`
 --
 DELIMITER $$
 CREATE TRIGGER `user_add_dosen` AFTER INSERT ON `dosen` FOR EACH ROW BEGIN INSERT INTO app_simpro.user VALUES(new.username, new.nidn, 'D', 'default'); END
@@ -614,7 +614,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jurnal`
+-- Struktur dari tabel `jurnal`
 --
 
 CREATE TABLE `jurnal` (
@@ -627,7 +627,7 @@ CREATE TABLE `jurnal` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kegiatan`
+-- Struktur dari tabel `kegiatan`
 --
 
 CREATE TABLE `kegiatan` (
@@ -650,7 +650,7 @@ CREATE TABLE `kegiatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kegiatan`
+-- Dumping data untuk tabel `kegiatan`
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `prodi`, `nama_kegiatan`, `jenis_kegiatan`, `id_koordinator`, `status_mulai`, `angkatan`, `tgl_mulai`, `tgl_selesai`, `semester`, `persentase_sidang`, `persentase_bimbingan`, `min_bimbingan`, `tgl_batas_proposal`, `tgl_batas_bimbingan`, `tgl_batas_sidang`) VALUES
@@ -659,7 +659,7 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `prodi`, `nama_kegiatan`, `jenis_kegiatan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kegiatan_parameter`
+-- Struktur dari tabel `kegiatan_parameter`
 --
 
 CREATE TABLE `kegiatan_parameter` (
@@ -674,7 +674,7 @@ CREATE TABLE `kegiatan_parameter` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kegiatan_progress`
+-- Struktur dari tabel `kegiatan_progress`
 --
 
 CREATE TABLE `kegiatan_progress` (
@@ -684,7 +684,7 @@ CREATE TABLE `kegiatan_progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kegiatan_progress`
+-- Dumping data untuk tabel `kegiatan_progress`
 --
 
 INSERT INTO `kegiatan_progress` (`id_kegiatan_progress`, `judul_progress`, `id_kegiatan`) VALUES
@@ -707,7 +707,7 @@ INSERT INTO `kegiatan_progress` (`id_kegiatan_progress`, `judul_progress`, `id_k
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa`
+-- Struktur dari tabel `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -725,7 +725,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mahasiswa`
+-- Dumping data untuk tabel `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`npm`, `nama`, `alamat`, `tempat_lahir`, `tgl_lahir`, `prodi`, `semester`, `angkatan`, `kelas`, `email`, `no_telp`) VALUES
@@ -807,7 +807,7 @@ INSERT INTO `mahasiswa` (`npm`, `nama`, `alamat`, `tempat_lahir`, `tgl_lahir`, `
 ('7654321', 'Simpro Sample MHS #2', '', '', '0000-00-00', 14, 2, 2019, 'F', NULL, NULL);
 
 --
--- Triggers `mahasiswa`
+-- Trigger `mahasiswa`
 --
 DELIMITER $$
 CREATE TRIGGER `user_add_mahasiswa` AFTER INSERT ON `mahasiswa` FOR EACH ROW BEGIN INSERT INTO app_simpro.user VALUES(new.npm, new.npm, 'M', 'default'); END
@@ -823,7 +823,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matkul_prasyarat`
+-- Struktur dari tabel `matkul_prasyarat`
 --
 
 CREATE TABLE `matkul_prasyarat` (
@@ -835,7 +835,7 @@ CREATE TABLE `matkul_prasyarat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifikasi`
+-- Struktur dari tabel `notifikasi`
 --
 
 CREATE TABLE `notifikasi` (
@@ -850,7 +850,7 @@ CREATE TABLE `notifikasi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obyek_penelitian`
+-- Struktur dari tabel `obyek_penelitian`
 --
 
 CREATE TABLE `obyek_penelitian` (
@@ -860,7 +860,7 @@ CREATE TABLE `obyek_penelitian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `obyek_penelitian`
+-- Dumping data untuk tabel `obyek_penelitian`
 --
 
 INSERT INTO `obyek_penelitian` (`id_penelitian`, `nama_penelitian`, `id_prodi`) VALUES
@@ -880,7 +880,7 @@ INSERT INTO `obyek_penelitian` (`id_penelitian`, `nama_penelitian`, `id_prodi`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembimbing_kegiatan`
+-- Struktur dari tabel `pembimbing_kegiatan`
 --
 
 CREATE TABLE `pembimbing_kegiatan` (
@@ -890,7 +890,7 @@ CREATE TABLE `pembimbing_kegiatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pembimbing_kegiatan`
+-- Dumping data untuk tabel `pembimbing_kegiatan`
 --
 
 INSERT INTO `pembimbing_kegiatan` (`id_pembimbing_kegiatan`, `nik`, `id_kegiatan`) VALUES
@@ -901,7 +901,7 @@ INSERT INTO `pembimbing_kegiatan` (`id_pembimbing_kegiatan`, `nik`, `id_kegiatan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prodi`
+-- Struktur dari tabel `prodi`
 --
 
 CREATE TABLE `prodi` (
@@ -911,7 +911,7 @@ CREATE TABLE `prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `prodi`
+-- Dumping data untuk tabel `prodi`
 --
 
 INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `total_semester`) VALUES
@@ -921,7 +921,7 @@ INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `total_semester`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proyek`
+-- Struktur dari tabel `proyek`
 --
 
 CREATE TABLE `proyek` (
@@ -949,7 +949,7 @@ CREATE TABLE `proyek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `proyek`
+-- Dumping data untuk tabel `proyek`
 --
 
 INSERT INTO `proyek` (`id_proyek`, `judul_proyek`, `abstrak`, `keyword_abstrak`, `latar_belakang`, `identifikasi_masalah`, `daftar_pustaka`, `id_penelitian`, `id_kegiatan`, `id_dosen_pembimbing`, `id_dosen_penguji`, `tgl_sidang`, `tgl_sidang_ulang`, `nilai_pembimbing`, `nilai_penguji`, `ruangan`, `npm_ketua`, `status_proyek`, `npm_anggota`, `created_date`, `last_update`) VALUES
@@ -996,7 +996,7 @@ INSERT INTO `proyek` (`id_proyek`, `judul_proyek`, `abstrak`, `keyword_abstrak`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sidang`
+-- Struktur dari tabel `sidang`
 --
 
 CREATE TABLE `sidang` (
@@ -1012,7 +1012,7 @@ CREATE TABLE `sidang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sidang`
+-- Dumping data untuk tabel `sidang`
 --
 
 INSERT INTO `sidang` (`id_sidang`, `id_proyek`, `npm`, `tgl_sidang_mulai`, `tgl_sidang_selesai`, `status`, `created_date`, `last_update`, `ruangan`) VALUES
@@ -1024,7 +1024,7 @@ INSERT INTO `sidang` (`id_sidang`, `id_proyek`, `npm`, `tgl_sidang_mulai`, `tgl_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sidang_nilai`
+-- Struktur dari tabel `sidang_nilai`
 --
 
 CREATE TABLE `sidang_nilai` (
@@ -1041,7 +1041,7 @@ CREATE TABLE `sidang_nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sidang_nilai`
+-- Dumping data untuk tabel `sidang_nilai`
 --
 
 INSERT INTO `sidang_nilai` (`id_sidang_nilai`, `nilai`, `id_dosen`, `posisi`, `created_date`, `last_update`, `id_sidang`, `batas_revisi`, `catatan`, `status`) VALUES
@@ -1057,7 +1057,7 @@ INSERT INTO `sidang_nilai` (`id_sidang_nilai`, `nilai`, `id_dosen`, `posisi`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sidang_progress`
+-- Struktur dari tabel `sidang_progress`
 --
 
 CREATE TABLE `sidang_progress` (
@@ -1071,7 +1071,7 @@ CREATE TABLE `sidang_progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sidang_progress`
+-- Dumping data untuk tabel `sidang_progress`
 --
 
 INSERT INTO `sidang_progress` (`id_sidang_progress`, `id_proyek`, `nama_progress`, `status_penyelesaian`, `created_date`, `last_update`, `id_dosen`) VALUES
@@ -1087,7 +1087,7 @@ INSERT INTO `sidang_progress` (`id_sidang_progress`, `id_proyek`, `nama_progress
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sidang_ulang`
+-- Struktur dari tabel `sidang_ulang`
 --
 
 CREATE TABLE `sidang_ulang` (
@@ -1104,7 +1104,7 @@ CREATE TABLE `sidang_ulang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sub_laporan`
+-- Struktur dari tabel `sub_laporan`
 --
 
 CREATE TABLE `sub_laporan` (
@@ -1120,7 +1120,7 @@ CREATE TABLE `sub_laporan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sub_laporan`
+-- Dumping data untuk tabel `sub_laporan`
 --
 
 INSERT INTO `sub_laporan` (`id_proyek`, `id_bimbingan`, `nama_file`, `type`, `status`, `created_date`, `last_update`, `alasan_revisi`, `target`) VALUES
@@ -1426,7 +1426,7 @@ INSERT INTO `sub_laporan` (`id_proyek`, `id_bimbingan`, `nama_file`, `type`, `st
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -1437,7 +1437,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `pass`, `jabatan`, `profile`) VALUES
@@ -1536,8 +1536,21 @@ INSERT INTO `user` (`id_user`, `pass`, `jabatan`, `profile`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `v_total_revisi`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `v_bimbingan`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `v_bimbingan` (
+`id_bimbingan` int(24)
+,`id_proyek` int(16)
+,`nilai_bimbingan` int(100)
+,`total_revisi` decimal(22,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `v_total_revisi`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_total_revisi` (
 `id_bimbingan` int(11)
@@ -1548,7 +1561,16 @@ CREATE TABLE `v_total_revisi` (
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_total_revisi`
+-- Struktur untuk view `v_bimbingan`
+--
+DROP TABLE IF EXISTS `v_bimbingan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_bimbingan`  AS  select `bimbingan`.`id_bimbingan` AS `id_bimbingan`,`bimbingan`.`id_proyek` AS `id_proyek`,`bimbingan`.`nilai_bimbingan` AS `nilai_bimbingan`,(select `v_total_revisi`.`total_revisi` from `v_total_revisi` where `v_total_revisi`.`status_bimbingan` = 1 and `v_total_revisi`.`id_bimbingan` = `bimbingan`.`id_bimbingan`) AS `total_revisi` from `bimbingan` where (select `v_total_revisi`.`total_revisi` from `v_total_revisi` where `v_total_revisi`.`status_bimbingan` = 1 and `v_total_revisi`.`id_bimbingan` = `bimbingan`.`id_bimbingan`) is not null ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `v_total_revisi`
 --
 DROP TABLE IF EXISTS `v_total_revisi`;
 
@@ -1559,19 +1581,19 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`nidn`);
 
 --
--- Indexes for table `auth_key`
+-- Indeks untuk tabel `auth_key`
 --
 ALTER TABLE `auth_key`
   ADD PRIMARY KEY (`token`);
 
 --
--- Indexes for table `bimbingan`
+-- Indeks untuk tabel `bimbingan`
 --
 ALTER TABLE `bimbingan`
   ADD PRIMARY KEY (`id_bimbingan`),
@@ -1579,82 +1601,82 @@ ALTER TABLE `bimbingan`
   ADD KEY `key_proyek` (`id_proyek`);
 
 --
--- Indexes for table `bimbingan_progress`
+-- Indeks untuk tabel `bimbingan_progress`
 --
 ALTER TABLE `bimbingan_progress`
   ADD PRIMARY KEY (`id_bimbingan_progress`),
   ADD KEY `key_progress` (`id_bimbingan`);
 
 --
--- Indexes for table `dokumen_kegiatan`
+-- Indeks untuk tabel `dokumen_kegiatan`
 --
 ALTER TABLE `dokumen_kegiatan`
   ADD PRIMARY KEY (`id_dokumen`);
 
 --
--- Indexes for table `dosen`
+-- Indeks untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`nidn`);
 
 --
--- Indexes for table `jurnal`
+-- Indeks untuk tabel `jurnal`
 --
 ALTER TABLE `jurnal`
   ADD PRIMARY KEY (`id_jurnal`);
 
 --
--- Indexes for table `kegiatan`
+-- Indeks untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
   ADD PRIMARY KEY (`id_kegiatan`);
 
 --
--- Indexes for table `kegiatan_progress`
+-- Indeks untuk tabel `kegiatan_progress`
 --
 ALTER TABLE `kegiatan_progress`
   ADD PRIMARY KEY (`id_kegiatan_progress`),
   ADD KEY `key_kegiatan_progress` (`id_kegiatan`);
 
 --
--- Indexes for table `mahasiswa`
+-- Indeks untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`npm`);
 
 --
--- Indexes for table `matkul_prasyarat`
+-- Indeks untuk tabel `matkul_prasyarat`
 --
 ALTER TABLE `matkul_prasyarat`
   ADD PRIMARY KEY (`id_prasyarat`);
 
 --
--- Indexes for table `notifikasi`
+-- Indeks untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
   ADD PRIMARY KEY (`id_notifikasi`),
   ADD KEY `user_target` (`target`);
 
 --
--- Indexes for table `obyek_penelitian`
+-- Indeks untuk tabel `obyek_penelitian`
 --
 ALTER TABLE `obyek_penelitian`
   ADD PRIMARY KEY (`id_penelitian`);
 
 --
--- Indexes for table `pembimbing_kegiatan`
+-- Indeks untuk tabel `pembimbing_kegiatan`
 --
 ALTER TABLE `pembimbing_kegiatan`
   ADD PRIMARY KEY (`id_pembimbing_kegiatan`);
 
 --
--- Indexes for table `prodi`
+-- Indeks untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
--- Indexes for table `proyek`
+-- Indeks untuk tabel `proyek`
 --
 ALTER TABLE `proyek`
   ADD PRIMARY KEY (`id_proyek`),
@@ -1665,148 +1687,148 @@ ALTER TABLE `proyek`
   ADD KEY `key_penelitian` (`id_penelitian`);
 
 --
--- Indexes for table `sidang`
+-- Indeks untuk tabel `sidang`
 --
 ALTER TABLE `sidang`
   ADD PRIMARY KEY (`id_sidang`);
 
 --
--- Indexes for table `sidang_nilai`
+-- Indeks untuk tabel `sidang_nilai`
 --
 ALTER TABLE `sidang_nilai`
   ADD PRIMARY KEY (`id_sidang_nilai`);
 
 --
--- Indexes for table `sidang_progress`
+-- Indeks untuk tabel `sidang_progress`
 --
 ALTER TABLE `sidang_progress`
   ADD PRIMARY KEY (`id_sidang_progress`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `bimbingan`
+-- AUTO_INCREMENT untuk tabel `bimbingan`
 --
 ALTER TABLE `bimbingan`
   MODIFY `id_bimbingan` int(24) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
--- AUTO_INCREMENT for table `bimbingan_progress`
+-- AUTO_INCREMENT untuk tabel `bimbingan_progress`
 --
 ALTER TABLE `bimbingan_progress`
   MODIFY `id_bimbingan_progress` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
 
 --
--- AUTO_INCREMENT for table `dokumen_kegiatan`
+-- AUTO_INCREMENT untuk tabel `dokumen_kegiatan`
 --
 ALTER TABLE `dokumen_kegiatan`
   MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `jurnal`
+-- AUTO_INCREMENT untuk tabel `jurnal`
 --
 ALTER TABLE `jurnal`
   MODIFY `id_jurnal` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `kegiatan`
+-- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
   MODIFY `id_kegiatan` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `kegiatan_progress`
+-- AUTO_INCREMENT untuk tabel `kegiatan_progress`
 --
 ALTER TABLE `kegiatan_progress`
   MODIFY `id_kegiatan_progress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `matkul_prasyarat`
+-- AUTO_INCREMENT untuk tabel `matkul_prasyarat`
 --
 ALTER TABLE `matkul_prasyarat`
   MODIFY `id_prasyarat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `notifikasi`
+-- AUTO_INCREMENT untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
   MODIFY `id_notifikasi` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `obyek_penelitian`
+-- AUTO_INCREMENT untuk tabel `obyek_penelitian`
 --
 ALTER TABLE `obyek_penelitian`
   MODIFY `id_penelitian` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `pembimbing_kegiatan`
+-- AUTO_INCREMENT untuk tabel `pembimbing_kegiatan`
 --
 ALTER TABLE `pembimbing_kegiatan`
   MODIFY `id_pembimbing_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `proyek`
+-- AUTO_INCREMENT untuk tabel `proyek`
 --
 ALTER TABLE `proyek`
   MODIFY `id_proyek` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
--- AUTO_INCREMENT for table `sidang`
+-- AUTO_INCREMENT untuk tabel `sidang`
 --
 ALTER TABLE `sidang`
   MODIFY `id_sidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `sidang_nilai`
+-- AUTO_INCREMENT untuk tabel `sidang_nilai`
 --
 ALTER TABLE `sidang_nilai`
   MODIFY `id_sidang_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `sidang_progress`
+-- AUTO_INCREMENT untuk tabel `sidang_progress`
 --
 ALTER TABLE `sidang_progress`
   MODIFY `id_sidang_progress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `bimbingan`
+-- Ketidakleluasaan untuk tabel `bimbingan`
 --
 ALTER TABLE `bimbingan`
   ADD CONSTRAINT `key_progress_tema` FOREIGN KEY (`id_kegiatan_progress`) REFERENCES `kegiatan_progress` (`id_kegiatan_progress`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `key_proyek` FOREIGN KEY (`id_proyek`) REFERENCES `proyek` (`id_proyek`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `bimbingan_progress`
+-- Ketidakleluasaan untuk tabel `bimbingan_progress`
 --
 ALTER TABLE `bimbingan_progress`
   ADD CONSTRAINT `key_progress` FOREIGN KEY (`id_bimbingan`) REFERENCES `bimbingan` (`id_bimbingan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `kegiatan_progress`
+-- Ketidakleluasaan untuk tabel `kegiatan_progress`
 --
 ALTER TABLE `kegiatan_progress`
   ADD CONSTRAINT `key_kegiatan_progress` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `notifikasi`
+-- Ketidakleluasaan untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
   ADD CONSTRAINT `user_target` FOREIGN KEY (`target`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `proyek`
+-- Ketidakleluasaan untuk tabel `proyek`
 --
 ALTER TABLE `proyek`
   ADD CONSTRAINT `key_dosen_pembimbing` FOREIGN KEY (`id_dosen_pembimbing`) REFERENCES `dosen` (`nidn`) ON DELETE SET NULL ON UPDATE CASCADE,
