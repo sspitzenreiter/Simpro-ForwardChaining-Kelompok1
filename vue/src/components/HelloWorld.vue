@@ -122,10 +122,12 @@ export default {
           keterangan.push({"label":"Nilai Sidang", key:"nilai_sidang",value:data.nilai_sidang})
           keterangan.push({"label":"Total Rata - Rata revisi", key:"total_revisi",value:data.total_revisi})
           keterangan.push({"label":"Total Rata - Rata bimbingan", key:"total_bimbingan",value:data.total_bimbingan})
+          var nilai_rata = 0;
           data.info_siap.map(x=>{
             keterangan.push({"label":"Nilai "+x.nama_matkul, key:"matkul",value:x.nilai})
+            nilai_rata+=parseInt(x.nilai);
           })
-
+          keterangan.push({"label":"Nilai Matkul", key:"matkul",value:nilai_rata/2})
           this.footers = "";
           keterangan.map(x=>{
             this.footers+=x.label+" : "+x.value+"<br>";
